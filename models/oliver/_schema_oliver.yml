@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: oliver_dim_customer
+    description: "Oliver's Customer Dimension"
+  - name: oliver_dim_date
+    description: "Oliver's Date Dimension"
+  - name: oliver_dim_employee
+    description: "Oliver's Employee Dimension"
+  - name: oliver_dim_product
+    description: "Oliver's Product Dimension"
+  - name: oliver_dim_store
+    description: "Oliver's Store Dimension"
+  - name: fact_sales
+    description: "Oliver's Sales Fact, one row per order line"
+  - name: sales
+    description: "Semantic layer for sales analysis"
