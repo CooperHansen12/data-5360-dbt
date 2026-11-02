@@ -15,3 +15,5 @@ models:
     description: "Oliver's Sales Fact, one row per order line"
   - name: sales
     description: "Semantic layer for sales analysis"
+  - name: employee_certifications   
+    description: "Oliver's employee certifications"
