@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: oliver_landing          # must match source('oliver_landing', ...) in fact_sales
-    database: <your database>     # keep whatever was already here
-    schema: oliver_dw_source      # the Snowflake schema Fivetran loads into
+  - name: oliver_landing          
+    database: cooper_hansen   
+    schema: oliver_dw_source      
     tables:
       - name: customer
       - name: employee
@@ -11,4 +11,4 @@ sources:
       - name: orders
       - name: product
       - name: store
-      - name: employee_certifications   # new, exact name from Snowflake
+      - name: employee_certifications   
