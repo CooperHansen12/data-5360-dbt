@@ -15,3 +15,7 @@ models:
     description: "Oliver's Sales Fact, one row per order line"
   - name: sales
     description: "Semantic layer for sales analysis"
+  - name: employee_certifications   
+    description: "Oliver's employee certifications"
+  - name: fact_certification
+    description: "Oliver's certification fact table. The grain is one row per employee certification completed. Contains keys to oliver_dim_employee and oliver_dim_date, plus the certification name and cost."
