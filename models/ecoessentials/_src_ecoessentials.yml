@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: eco_postgres
+    database: group_6_project_db
+    schema: ECOESSENTIALS_TRANSACTIONAL_DB
+    tables:
+      - name: product
+      - name: promotional_campaign
+      - name: customer
+      - name: order
+        identifier: '"ORDER"'
+      - name: order_line
+
+  - name: eco_email
+    database: group_6_project_db
+    schema: ecoessentials_salesforce
+    quoting:
+      schema: true
+      identifier: true
+    tables:
+      - name: marketing_emails
