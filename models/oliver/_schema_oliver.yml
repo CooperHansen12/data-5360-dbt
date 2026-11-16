@@ -13,12 +13,17 @@ models:
     description: "Oliver's Employee Dimension"
   - name: oliver_dim_product
     description: "Oliver's Product Dimension"
-    # columns:
-    #   - name: <column with a short fixed list of values>
-    #     data_tests:
-    #       - accepted_values:
-    #           arguments:
-    #             values: ['value1', 'value2']
+    columns:
+      - name: product_name
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "Small Popcorn"
+                  - "Gummy Bears"
+                  - "Small Coffee"
+                  - "Chocolate Bar"
+                  - "Marshmallows"
   - name: oliver_dim_store
     description: "Oliver's Store Dimension"
   - name: fact_sales
