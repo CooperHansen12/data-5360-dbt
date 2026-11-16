@@ -11,14 +11,14 @@ models:
     description: "Insurance Policy Dimension"
     columns:
       - name: policy_key
-        tests:
+        data_tests:
           - unique
   - name: fact_claim
     description: "Insurance Claim Fact"
     columns:
       - name: policy_key
         description: "A foreign key to the policy dimension"
-        tests:
+        data_tests:
           - not_null
   - name: stg_customer_service_interactions
     description: |
@@ -26,15 +26,16 @@ models:
       Each record represents a call between a customer and an agent.
     columns:
       - name: issue_type
-        tests:
+        data_tests:
           - accepted_values:
-              values:
-                - "New Claim"
-                - "Claim Status"
-                - "Policy Change"
-                - "Coverage Info"
-                - "Billing Issue"
-                - "Policy Renewal"
+              arguments:
+                values:
+                  - "New Claim"
+                  - "Claim Status"
+                  - "Policy Change"
+                  - "Coverage Info"
+                  - "Billing Issue"
+                  - "Policy Renewal"
   - name: fact_interaction
     description: |
       Customer Service Interaction Fact.
@@ -42,7 +43,8 @@ models:
       Each record represents a call between a customer and an agent on a given date.
     columns:
       - name: customer_key
-        tests:
+        data_tests:
           - relationships:
-              to: ref('dim_customer')
-              field: customer_key
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
