@@ -3,19 +3,40 @@ version: 2
 models:
   - name: oliver_dim_customer
     description: "Oliver's Customer Dimension"
+    columns:
+      - name: customer_key
+        data_tests:
+          - unique
   - name: oliver_dim_date
     description: "Oliver's Date Dimension"
   - name: oliver_dim_employee
     description: "Oliver's Employee Dimension"
   - name: oliver_dim_product
     description: "Oliver's Product Dimension"
+    # columns:
+    #   - name: <column with a short fixed list of values>
+    #     data_tests:
+    #       - accepted_values:
+    #           arguments:
+    #             values: ['value1', 'value2']
   - name: oliver_dim_store
     description: "Oliver's Store Dimension"
   - name: fact_sales
     description: "Oliver's Sales Fact, one row per order line"
+    columns:
+      - name: customer_key
+        data_tests:
+          - not_null
   - name: sales
     description: "Semantic layer for sales analysis"
-  - name: employee_certifications   
+  - name: stg_employee_certifications
     description: "Oliver's employee certifications"
   - name: fact_certification
     description: "Oliver's certification fact table. The grain is one row per employee certification completed. Contains keys to oliver_dim_employee and oliver_dim_date, plus the certification name and cost."
+    columns:
+      - name: employee_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('oliver_dim_employee')
+                field: employee_key
