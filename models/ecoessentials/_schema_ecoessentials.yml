@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: dim_campaign
+    columns:
+      - name: campaign_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_customer
+    columns:
+      - name: customer_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_email
+    columns:
+      - name: email_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_event_type
+    columns:
+      - name: event_type_key
+        data_tests:
+          - unique
+          - not_null
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['SENT', 'OPEN', 'CLICK']
+
+  - name: dim_product
+    columns:
+      - name: product_key
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fact_sales
+    columns:
+      - name: order_line_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+      - name: product_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key
+      - name: date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+  - name: fact_email_events
+    columns:
+      - name: emaileventid
+        data_tests:
+          - not_null
+      - name: event_type_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_event_type')
+                field: event_type_key
+      - name: email_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_email')
+                field: email_key
+      - name: customer_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
