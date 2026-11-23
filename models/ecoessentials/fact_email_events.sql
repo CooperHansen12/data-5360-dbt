@@ -11,7 +11,7 @@ select
     e.eventtimestamp as event_timestamp,
     1 as event_count
 from {{ source('eco_email', 'marketing_emails') }} e
-left join {{ ref('dim_customer') }} cu
+left join {{ ref('dim_eco_customer') }} cu
     on upper(trim(e.subscriberfirstname)) = cu.first_name_clean
     and upper(trim(e.subscriberlastname)) = cu.last_name_clean
 left join {{ ref('dim_campaign') }} ca
@@ -20,5 +20,5 @@ left join {{ ref('dim_email') }} em
        on e.emailid = em.emailid
 left join {{ ref('dim_event_type') }} et
     on upper(trim(e.eventtype)) = et.event_type
-left join {{ ref('dim_date') }} d
+left join {{ ref('dim_eco_date') }} d
     on cast(e.eventtimestamp as date) = d.date_day
