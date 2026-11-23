@@ -48,7 +48,7 @@ models:
           - unique
           - not_null
 
-  - name: fact_sales
+  - name: fact_eco_sales
     columns:
       - name: order_line_id
         data_tests:
