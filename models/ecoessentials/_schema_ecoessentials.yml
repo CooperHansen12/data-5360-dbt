@@ -8,14 +8,14 @@ models:
           - unique
           - not_null
 
-  - name: dim_customer
+  - name: dim_eco_customer
     columns:
       - name: customer_key
         data_tests:
           - unique
           - not_null
 
-  - name: dim_date
+  - name: dim_eco_date
     columns:
       - name: date_key
         data_tests:
