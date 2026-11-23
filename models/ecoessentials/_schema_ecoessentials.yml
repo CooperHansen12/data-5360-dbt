@@ -58,7 +58,7 @@ models:
         data_tests:
           - relationships:
               arguments:
-                to: ref('dim_customer')
+                to: ref('dim_eco_customer')
                 field: customer_key
       - name: product_key
         data_tests:
@@ -70,7 +70,7 @@ models:
         data_tests:
           - relationships:
               arguments:
-                to: ref('dim_date')
+                to: ref('dim_eco_date')
                 field: date_key
 
   - name: fact_email_events
@@ -94,5 +94,5 @@ models:
         data_tests:
           - relationships:
               arguments:
-                to: ref('dim_customer')
+                to: ref('dim_eco_customer')
                 field: customer_key
