@@ -40,3 +40,5 @@ models:
     +enabled: false
     oliver:
       +enabled: true
+    ecoessentials:
+      +enabled: true
